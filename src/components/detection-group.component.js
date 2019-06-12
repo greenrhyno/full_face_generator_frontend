@@ -3,7 +3,7 @@ import PhotoTile from './photo-tile.component';
 import './../style/detection-group.style.scss';
 
 export const DetectionGroup = ({detections}) =>
-  <div className="detection-group col-auto">
+  <div className="detection-group col">
     {
       detections.map((detection, idx) => 
         <div key={idx} className="detection-tile">
