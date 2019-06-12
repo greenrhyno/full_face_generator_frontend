@@ -7,13 +7,7 @@ const VIDEO_STREAM_PLACEHOLDER = 'https://upload.wikimedia.org/wikipedia/commons
 class LiveStream extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = {
-      count: 'NONE',
-      currentFrame: VIDEO_STREAM_PLACEHOLDER,
-      latestDetection: null
-    };
-
+    // connect to livestream socket and add handlers
     const liveStreamSocket = io.connect('http://127.0.0.1:5000/live-stream');
     liveStreamSocket.on('connect', function() {
       console.log("Connection triggered");
@@ -29,39 +23,38 @@ class LiveStream extends Component {
 
     liveStreamSocket.on('video_frame', (data) => {
       this.setState({
-        currentFrame: data.frame
+        currentFrame: data.frame,
+        timestamp: this.getTimestamp()
       })
     });
 
-    const detectionSocket = io.connect('http://127.0.0.1:5000/detections');
-    detectionSocket.on('connect', function() {
-      console.log("Detection socket - connection made");
-    });
-
-    detectionSocket.on('detection', data => {
-      console.log('NEW DETECTION:', data.name, data);
-      this.setState({
-        latestDetection: data.image
-      })
-    })
+    super(props);
+    this.state = {
+      currentFrame: VIDEO_STREAM_PLACEHOLDER,
+      timestamp: this.getTimestamp()
+    };
   }
 
-  render = () => {
-    return (
-      <div>
-        <div className="row">
-          <img className="live-stream" src={this.state.currentFrame} alt='Video Stream'/>
-        </div>
+  getTimestamp = () => {
+    const currentdate = new Date();
+    var datetime = this.pad(currentdate.getHours()) + ":"  
+                + this.pad(currentdate.getMinutes()) + ":" 
+                + this.pad(currentdate.getSeconds());
 
-        <div className="row">
-          <h4>Detection</h4>
-          <img src={this.state.latestDetection} alt="No detection"/>
-        </div>
-
-      </div>
-
-    )
+    return datetime;
   }
+
+  pad = number => number <= 9999 ? `0${number}`.slice(-2) : number;
+
+  render = () => 
+    <div>
+      <div className="timestamp"><span>{this.state.timestamp}</span></div>
+      <img 
+        className="live-stream" 
+        src={this.state.currentFrame} 
+        alt='Video Stream'
+      />
+    </div>
 
 } 
 

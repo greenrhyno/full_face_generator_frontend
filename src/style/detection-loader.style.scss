@@ -1,0 +1,16 @@
+@import './../colors.scss';
+
+.detection-loader {
+
+  .header {
+    color: $light;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 11pt;
+  }
+
+  .detection-group-container {
+    height: calc(100% - 48px);
+  }
+}

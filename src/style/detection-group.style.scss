@@ -1,0 +1,19 @@
+$tileHeight: 160px; 
+
+.detection-group {
+  height: 100% !important;
+  padding: 0 .1rem 0 .1rem !important;
+  display: flex;
+  // justify-content: center;
+  flex-flow: column;
+
+
+  .detection-tile {
+    margin-top: 1rem;
+    align-self: center;
+    position: relative;
+    height: $tileHeight;
+    width: 150px;
+
+  }
+}

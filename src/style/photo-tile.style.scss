@@ -1,0 +1,36 @@
+
+
+.split {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 400px;
+  cursor: pointer;
+
+  img {
+    height: 100%;;
+    width: 100%;
+    opacity: 0;
+  }
+
+  div {
+    position: absolute;
+    z-index: 1;
+    background-repeat: no-repeat;
+    transform: rotateY(-180deg);
+    opacity: 0;
+    transform-origin: bottom;
+    transition: all .6s cubic-bezier(.71, .05, .09, .91);
+
+    &.secondary {
+      transform: rotateY(180deg);
+    }
+
+    &.active {
+      opacity: 1;
+      transform: rotate(0deg) translateY(0);
+      -webkit-transform: rotate(0deg) translateY(0);
+    }
+  }
+}
