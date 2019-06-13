@@ -4,11 +4,30 @@
 body {
   font-family: 'Orbitron', sans-serif !important;
   letter-spacing: .2rem;
+  
+}
+
+.custom-scroll {
+  &::-webkit-scrollbar
+  {
+      width: .3rem;
+      height: .3rem;
+      background-color: $background;
+  }
+  
+  &::-webkit-scrollbar-thumb
+  {
+      background-color: $blue1;
+  }
 }
 
 .col, .col-1, .col-2, .col-3, .col-4, .col-5, 
 .col-6, .col-7, .col-8, .col-9, .col-10, 
 .col-11, .col-12, .col-auto {
+  margin: 0 !important;
+}
+
+.row {
   margin: 0 !important;
 }
 
@@ -19,6 +38,7 @@ body {
 }
 
 .global-container {
+  padding-top: 15px;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -29,5 +49,10 @@ body {
 }
 
 .detection-loader-container {
-  padding: .5rem 1.5rem .5rem .5rem !important;
+  padding: .5rem .5rem .5rem .5rem !important;
+}
+
+.deck-container {
+  overflow-x: auto;
+  overflow: visible;
 }

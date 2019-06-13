@@ -7,6 +7,9 @@ export const DetectionGroup = ({detections}) =>
     {
       detections.map((detection, idx) => 
         <div key={idx} className="detection-tile">
+          <div class="overlay">
+            <div class="text">{detection.label}</div>
+          </div>
           <PhotoTile src={detection ? detection.image : null}/>
         </div>
       )

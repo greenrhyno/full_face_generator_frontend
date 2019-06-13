@@ -1,3 +1,5 @@
+@import './../colors.scss';
+
 $tile-height: 125px; 
 $tile-width: 125px;
 
@@ -6,7 +8,7 @@ $tile-width: 125px;
   padding: 0 .1rem 0 .1rem !important;
   display: flex;
   flex-flow: column;
-
+  overflow: visible;
 
   .detection-tile {
     margin-top: 1rem;
@@ -14,5 +16,34 @@ $tile-width: 125px;
     position: relative;
     height: $tile-height;
     width: $tile-width;
+
+    .overlay {
+      position: absolute;
+      top: -4px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: calc(100% + 8px);
+      width: 100%;
+      opacity: 0;
+      transition: .4s ease;
+      background-color: $blue1;
+      z-index: 1;
+    }
+    
+    &:hover .overlay {
+      opacity: 1;
+    }
+    
+    .text {
+      color: white;
+      font-size: 10.5pt;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
   }
 }

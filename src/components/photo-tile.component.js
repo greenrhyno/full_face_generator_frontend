@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import * as classNames from 'classnames';
 import './../style/photo-tile.style.scss';
 
-const GRIDX = 10;
-const GRIDY = 12;
+const GRIDX = 5;
+const GRIDY = 5;
 export const DEF_SIZE = {
   w: 125,
   h: 125
@@ -99,7 +99,7 @@ class PhotoTile extends Component {
           width: DEF_SIZE.w,
           height: DEF_SIZE.h
         }}
-        onClick={() => this.setState({loaded: !this.state.loaded})}
+        // onClick={() => this.setState({loaded: !this.state.loaded})}
       >
         {/* <img src={this.state.src} display={this.state.loaded ? 'none' : undefined} alt="Image1"/> */}
         {

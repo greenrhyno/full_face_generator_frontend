@@ -21,6 +21,9 @@ class Main extends Component {
 
     const newDetectionGroups = [...this.state.archivedDetectionGroups];
     newDetectionGroups.push(detections);
+    if (newDetectionGroups.length > 20) {
+      newDetectionGroups.shift();
+    }
     this.setState({
       archivedDetectionGroups: newDetectionGroups
     })
@@ -36,7 +39,7 @@ class Main extends Component {
           <DetectionLoader archiveDetections={this.archiveDetections}/>
         </div>
       </div>
-      <div className="row">
+      <div className="deck-container custom-scroll row">
         <DetectionDeck detectionGroups={this.state.archivedDetectionGroups}/>
       </div>
     </div>
