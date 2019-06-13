@@ -5,8 +5,8 @@ import './../style/photo-tile.style.scss';
 const GRIDX = 10;
 const GRIDY = 12;
 export const DEF_SIZE = {
-  w: 150,
-  h: 160
+  w: 125,
+  h: 125
 }
 const DELAY = 0.05;
 const DEF_IMG = 'https://paradisevalleychristian.org/wp-content/uploads/2017/01/Blank-Profile.png';

@@ -11,8 +11,9 @@
   }
 
   .detection-group-container {
+    margin-top: 10px;
     height: calc(100% - 48px);
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
 }

@@ -12,7 +12,8 @@ const matchID = (id, array) => {
   return -1;
 }
 
-const MAX_TILE = 3;
+const MAX_TILE = 4;
+const MAX_COL = 2;
 
 class DetectionLoader extends Component {
 
@@ -29,7 +30,10 @@ class DetectionLoader extends Component {
     detectionSocket.on('detection', (data) => {
       console.log("New detection:", data);
       // check for required fields
-      if (!(data && data.id && data.image)) return;
+      if (!(data && data.id 
+        && data.matched_face && data.matched_name 
+        && data.matched_front_fake_face)) 
+          return;
 
       const newDetectionArray = [...this.state.detections];
       const matchingIndex = matchID(data.id, this.state.detections);
@@ -42,6 +46,11 @@ class DetectionLoader extends Component {
         if (newDetectionArray[matchingIndex].length < MAX_TILE) {
           newDetectionArray[matchingIndex].push(null);
         }
+      }
+
+      if (newDetectionArray.length > MAX_COL) {
+        const groupToArchive = newDetectionArray.shift();
+        this.props.archiveDetections(groupToArchive);
       }
 
       this.setState({
